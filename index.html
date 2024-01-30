@@ -25,12 +25,21 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <title>Static Template</title>
+    <title>Data Layer</title>
   </head>
   <body>
-    <h1>
-      This is a static template, there is no bundler or bundling involved!
-    </h1>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T2HCBRXW"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <h1>Data Layer</h1>
 
     <form>
       <input type="email" name="email" id="email" />
@@ -39,26 +48,23 @@
     <br />
     <a href="./thank-you.html">Next page</a>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-T2HCBRXW"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden;"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <script>
+      // Submit email
       document.querySelector("#btn").addEventListener("click", (event) => {
         event.preventDefault();
 
+        // Get the email value
         const email = document.querySelector("#email").value;
 
+        // Validate email
         if (email !== "") {
+          // Push the email
           window.dataLayer.push({ user_email: email });
           console.log(email);
+
+          // Trigger the dataLayer push event
+          window.dataLayer.push({ event: "dataLayerPush" });
+          console.log(dataLayer);
 
           // Store email in the cookies
           document.cookie = `user_email=${email}`;
