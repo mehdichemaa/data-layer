@@ -59,7 +59,7 @@
         // Validate email
         if (email !== "") {
           // Push the email
-          window.dataLayer.push({ user_email: email });
+          window.dataLayer.push({ email: email });
           console.log(email);
 
           // Trigger the dataLayer push event
@@ -67,7 +67,7 @@
           console.log(dataLayer);
 
           // Store email in the cookies
-          document.cookie = `user_email=${email}`;
+          document.cookie = `email=${email}`;
         }
       });
     </script>
